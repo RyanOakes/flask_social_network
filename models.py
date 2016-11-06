@@ -9,7 +9,7 @@ DATABASE = SqliteDatabase('social.db')
 class User(UserMixin, Model):
     username = CharField(unique=True)
     email = CharField(unique=True)
-    password = CharField(max_lenght=100)
+    password = CharField(max_length=100)
     joined_at = DateTimeField(default=datetime.datetime.now)
     is_admin = BooleanField(default=False)
 
@@ -27,3 +27,9 @@ class User(UserMixin, Model):
             is_admin=admin)
         except IntegrityError:
             raise ValueError("User already exists")
+
+
+def initialize():
+    DATABASE.connect()
+    DATABASE.create_tables([User], safe=True)
+    DATABASE.close()
