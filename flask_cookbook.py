@@ -12,6 +12,12 @@ echo *.pyc >> .gitignore
 echo .env >> .gitignore
 echo db.sqlite3 >> ../.gitignore
 
+git add .
+git commit -m "Initial docs upload"
+
+git remote add origin https://github.com/RyanOakes/project_name.git
+git push -u origin master
+
 
 
 
